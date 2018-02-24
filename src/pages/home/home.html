@@ -11,8 +11,18 @@
 <ion-content padding>
   <ion-item>
     <ion-label>¿Cuando quieres relajarte?</ion-label>
-    <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="myDate"></ion-datetime>
+
+    
+    <ion-datetime displayFormat="MMM DD, YYYY" [(ngModel)]="myDate"></ion-datetime>
+
+    <ion-select interface="popover" [(ngModel)]="timeOfDay">
+        <ion-option value="0" selected="true">diurno</ion-option>
+        <ion-option value="1">vespertino</ion-option>
+        <ion-option value="2">nocturno</ion-option>
+    </ion-select>
+    
     <ion-icon name="calendar" item-right></ion-icon>
+    
   </ion-item>
   <!-- this creates a google map on the page with the given lat/lng from -->
   <!-- the component as the initial center of the map: -->

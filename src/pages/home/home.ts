@@ -10,8 +10,6 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
 })
 export class HomePage {
 
-  title: string = 'My first AGM project';
-
 lat: number;
 lng: number;
 private parkLocations: any[];
@@ -19,6 +17,7 @@ private noisePollutionLocations: any[];
 private soundReceptors: any[];
 
 private myDate: string;
+private timeOfDay: number;
 private showParks: boolean = false;
 constructor(public navCtrl: NavController, private data: DataProvider) {
   this.myDate = new Date().toISOString();
