@@ -25,11 +25,15 @@ export class HomePage {
   }
 ];
 
-lat: number = 51.678418;
-lng: number = 7.809007;
+lat: number;
+lng: number;
 
 constructor(public navCtrl: NavController) {
 
+  navigator.geolocation.getCurrentPosition(data => {
+    this.lat = data.coords.latitude;
+    this.lng = data.coords.longitude;
+  });
 }
 
 }
