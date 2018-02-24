@@ -15,22 +15,14 @@ export class DataProvider {
   getParks(){
     return this.responseHttp;
   }
-  getNoises(date: Date){
+  getNoises(timeOfDay: number,date: Date){
 
-    let interval = 0;
-    let hour = date.getHours();
-    if (hour <= 20 && hour > 12)
-      interval = 1;
-    else if (hour <= 12 && hour > 6)
-      interval = 0;
-    else
-      interval = 2;
     date.setMilliseconds(0);
     date.setHours(1);
     date.setMinutes(0);
     date.setSeconds(0);
-    console.log(interval,date.toISOString());
-    return this.http.get(`http://quitnoise.westeurope.cloudapp.azure.com:10000/noise_polution/?date=${date.toISOString()}&time_of_day=${interval}`).map((r: any) => r.results)
+    console.log(timeOfDay,date.toISOString());
+    return this.http.get(`http://quitnoise.westeurope.cloudapp.azure.com:10000/noise_polution/?date=${date.toISOString()}&time_of_day=${timeOfDay}`).map((r: any) => r.results)
   }
  
 

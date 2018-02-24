@@ -16,9 +16,9 @@
     <ion-datetime displayFormat="MMM DD, YYYY" [(ngModel)]="myDate"></ion-datetime>
 
     <ion-select interface="popover" [(ngModel)]="timeOfDay">
-        <ion-option value="0" selected="true">diurno</ion-option>
-        <ion-option value="1">vespertino</ion-option>
-        <ion-option value="2">nocturno</ion-option>
+        <ion-option value="1" selected="true">diurno</ion-option>
+        <ion-option value="2">vespertino</ion-option>
+        <ion-option value="3">nocturno</ion-option>
     </ion-select>
     
     <ion-icon name="calendar" item-right></ion-icon>
@@ -43,8 +43,9 @@
     </agm-marker>
 
     <agm-circle *ngFor="let sound of soundReceptors" [latitude]="sound.location.latitude" [longitude]="sound.location.longitude" 
-      [radius]="500"
-      [fillColor]="'#D3D3D3'"
+      [radius]="1000"
+      [fillColor]="sound.color"
+      fillOpacity="0.5"
       [circleDraggable]="false"
       [editable]="falses">
     </agm-circle>
