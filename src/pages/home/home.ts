@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
 
 @Component({
@@ -26,11 +27,31 @@ export class HomePage {
   }
 ];
 
-lat: number = 51.678418;
-lng: number = 7.809007;
+lat: number = 40.678418;
+lng: number = -3.809007;
+private parkLocations: any[];
+private myDate: string;
+private showParks: boolean = false;
+constructor(public navCtrl: NavController, private data: DataProvider, private alertCtrl: AlertController) {
+  this.myDate = new Date().toISOString();
+}
 
-constructor(public navCtrl: NavController) {
+show = () => {
+  this.showParks = true;   
+  this.parkLocations = this.data.getParks();
+}
+hide = () => {
+  this.showParks = false; 
+  this.parkLocations = []
+}
 
+presentCalendar() {
+  let alert = this.alertCtrl.create({
+    title: 'Low battery',
+    subTitle: '10% of battery remaining',
+    buttons: ['Dismiss']
+  });
+  alert.present();
 }
 
 }
