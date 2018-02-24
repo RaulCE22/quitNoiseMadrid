@@ -13,9 +13,9 @@
     <ion-label>¿Cuando quieres relajarte?</ion-label>
 
     
-    <ion-datetime displayFormat="MMM DD, YYYY" [(ngModel)]="myDate"></ion-datetime>
+    <ion-datetime displayFormat="MMM DD, YYYY" [(ngModel)]="myDate" (ionChange)="getNoises()"></ion-datetime>
 
-    <ion-select interface="popover" [(ngModel)]="timeOfDay">
+    <ion-select interface="popover" (ionChange)="getNoises()" [(ngModel)]="timeOfDay">
         <ion-option value="0" selected="true">diurno</ion-option>
         <ion-option value="1">vespertino</ion-option>
         <ion-option value="2">nocturno</ion-option>
@@ -44,13 +44,13 @@
 
     <agm-circle *ngFor="let sound of soundReceptors" [latitude]="sound.location.latitude" [longitude]="sound.location.longitude" 
       [radius]="500"
-      [fillColor]="'#D3D3D3'"
+      [fillColor]="red"
       [circleDraggable]="false"
       [editable]="falses">
     </agm-circle>
 
 </agm-map>
-<button ion-button full outline (click)="getNoises()">Visualizar ruido!!!</button>
+<!--<button ion-button full outline (click)="getNoises()">Visualizar ruido!!!</button>-->
   <button *ngIf="!showParks"ion-button full outline (click)="show()">Mostrar parques</button>
   <button *ngIf="showParks"ion-button full outline (click)="hide()">Ocultar parques</button>
 </ion-content>

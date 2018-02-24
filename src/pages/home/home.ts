@@ -25,6 +25,7 @@ constructor(public navCtrl: NavController, private data: DataProvider) {
     this.lat = data.coords.latitude;
     this.lng = data.coords.longitude;
   });
+  this.getNoises();
 }
 
 show = () => {
