@@ -32,9 +32,9 @@
       [latitude]="item.lat" [longitude]="item.lng">
     </agm-marker>
 
-    <agm-circle *ngFor="let sound of soundReceptors" [latitude]="40" [longitude]="sound.longitude" 
-      [radius]="50000"
-      [fillColor]="'red'"
+    <agm-circle *ngFor="let sound of soundReceptors" [latitude]="sound.location.latitude" [longitude]="sound.location.longitude" 
+      [radius]="500"
+      [fillColor]="'#D3D3D3'"
       [circleDraggable]="false"
       [editable]="falses">
     </agm-circle>

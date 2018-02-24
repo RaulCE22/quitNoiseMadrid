@@ -28,11 +28,6 @@ constructor(public navCtrl: NavController, private data: DataProvider) {
   });
 }
 
-ionViewDidLoad(){
-  this.noisePollutionLocations = this.data.getNoisePollution();  
-  console.log(this.noisePollutionLocations);
-}
-
 show = () => {
   this.showParks = true;   
   this.parkLocations = this.data.getParks();
@@ -43,7 +38,16 @@ hide = () => {
 }
 getNoises(){
   let date = new Date(Date.parse(this.myDate));
-  this.data.getNoises(date);
+  let noiseStations = this.data.getNoisesStations();
+  this.data.getNoises(date).subscribe(d => {
+    d.map(noise => {
+      noise.location = noiseStations[noise.district];
+      noise.color = getColor(noise.cont_value);
+    })
+    this.soundReceptors = d
+    console.log(this.soundReceptors)
+  });
+  
   let getLocation = () =>{
     return {latitude: 40.678418, longitude: -3.809007}
   }
@@ -55,11 +59,7 @@ getNoises(){
       color = 'orange';
     if(cont_value >= 60)
       color = 'green';
+    return color;
   }
-  this.soundReceptors = [{
-    location: {latitude: 40.678418, longitude: -3.809007},
-    color: getColor(50)
-  }]
-  console.log(this.soundReceptors)
 }
 }
