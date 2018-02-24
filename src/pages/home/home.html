@@ -22,6 +22,35 @@
         <strong>{{item.title}}</strong>
       </agm-info-window>
     </agm-marker>
+    <agm-marker 
+      [latitude]="lat" [longitude]="lng"
+      iconUrl="assets/imgs/ic_person_pin_circle_black.png">
+    </agm-marker>
+
+    <agm-marker *ngFor="let item of locations" 
+      [latitude]="item.lat" [longitude]="item.lng">
+    </agm-marker>
+    <agm-circle [latitude]="40.9000" [longitude]="-3" 
+      [radius]="50000"
+      [fillColor]="'red'"
+      [circleDraggable]="false"
+      [editable]="falses">
+    </agm-circle>
+
+    <agm-circle [latitude]="40.2000" [longitude]="-3" 
+      [radius]="50000"
+      [fillColor]="'green'"
+      [circleDraggable]="false"
+      [editable]="falses">
+    </agm-circle>
+
+    <agm-circle [latitude]="40.6000" [longitude]="-3" 
+    [radius]="50000"
+    [fillColor]="'orange'"
+    [circleDraggable]="false"
+    [editable]="falses">
+  </agm-circle>
+
   </agm-map>
   <button *ngIf="!showParks"ion-button full outline (click)="show()">Mostrar parques</button>
   <button *ngIf="showParks"ion-button full outline (click)="hide()">Ocultar parques</button>

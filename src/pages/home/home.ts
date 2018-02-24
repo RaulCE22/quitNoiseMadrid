@@ -34,6 +34,10 @@ private myDate: string;
 private showParks: boolean = false;
 constructor(public navCtrl: NavController, private data: DataProvider, private alertCtrl: AlertController) {
   this.myDate = new Date().toISOString();
+  navigator.geolocation.getCurrentPosition(data => {
+    this.lat = data.coords.latitude;
+    this.lng = data.coords.longitude;
+  });
 }
 
 show = () => {
@@ -43,15 +47,6 @@ show = () => {
 hide = () => {
   this.showParks = false; 
   this.parkLocations = []
-}
-
-presentCalendar() {
-  let alert = this.alertCtrl.create({
-    title: 'Low battery',
-    subTitle: '10% of battery remaining',
-    buttons: ['Dismiss']
-  });
-  alert.present();
 }
 
 }
