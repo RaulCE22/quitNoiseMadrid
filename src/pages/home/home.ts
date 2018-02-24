@@ -12,25 +12,10 @@ export class HomePage {
 
   title: string = 'My first AGM project';
 
-  locations: any = [
-  {
-    lat: 51.378418,
-    lng: 7.409007
-  },
-  {
-    lat: 51.578418,
-    lng: 7.709007
-  },
-  {
-    lat: 51.478418,
-    lng: 7.609007
-  }
-];
-
-lat: number = 40.678418;
-lng: number = -3.809007;
-
+lat: number;
+lng: number;
 private parkLocations: any[];
+private noisePollutionLocations: any[];
 private soundReceptors: any[];
 
 private myDate: string;
@@ -41,6 +26,11 @@ constructor(public navCtrl: NavController, private data: DataProvider) {
     this.lat = data.coords.latitude;
     this.lng = data.coords.longitude;
   });
+}
+
+ionViewDidLoad(){
+  this.noisePollutionLocations = this.data.getNoisePollution();  
+  console.log(this.noisePollutionLocations);
 }
 
 show = () => {
