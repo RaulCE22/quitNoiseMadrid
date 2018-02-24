@@ -3,7 +3,7 @@
     <!--button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button-->
-    <ion-title>quitNoise</ion-title>
+    <ion-title text-center>🍃QuitNoise🍃</ion-title>
     
   </ion-navbar>
 </ion-header>
@@ -16,9 +16,9 @@
     <ion-datetime displayFormat="MMM DD, YYYY" [(ngModel)]="myDate" (ionChange)="getNoises()"></ion-datetime>
 
     <ion-select interface="popover" (ionChange)="getNoises()" [(ngModel)]="timeOfDay">
-        <ion-option value="1" selected="true">diurno</ion-option>
-        <ion-option value="2">vespertino</ion-option>
-        <ion-option value="3">nocturno</ion-option>
+        <ion-option value="1" selected="true">Diurno</ion-option>
+        <ion-option value="2">Vespertino</ion-option>
+        <ion-option value="3">Nocturno</ion-option>
     </ion-select>
     
     <ion-icon name="calendar" item-right></ion-icon>

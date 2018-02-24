@@ -53,7 +53,7 @@ getNoises(){
   }
   let getColor = (cont_value: number) => {
 
-    cont_value = ( (cont_value - 50) / (70 - 50) ) * 100;
+    cont_value = ( (cont_value - 60) / (70 - 60) ) * 100;
 
     var hsv2rgb = function(h, s, v) {
       // adapted from http://schinckel.net/2012/01/10/hsv-to-rgb-in-javascript/
