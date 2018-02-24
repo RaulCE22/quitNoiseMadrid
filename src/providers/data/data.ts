@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 export class DataProvider {
 
   private responseHttp: any;
+  private noises: any;
   constructor(public http: HttpClient) {
     this.setResponseHttp();
     console.log('Hello DataProvider Provider');
@@ -14,7 +15,22 @@ export class DataProvider {
   getParks(){
     return this.responseHttp;
   }
+  getNoises(date: Date){
 
+    let interval = 0;
+    let hour = date.getHours();
+    if (hour <= 20 && hour > 12)
+      interval = 1;
+    else if (hour <= 12 && hour > 6)
+      interval = 0;
+    else
+      interval = 2;
+    date.setMilliseconds(0);
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(0);
+    console.log(interval,date.toISOString());
+  }
 
   //MOCK
   setResponseHttp(){

@@ -1,9 +1,9 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
+    <!--button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
+    </button-->
+    <ion-title text-center>Home</ion-title>
     
   </ion-navbar>
 </ion-header>
@@ -11,47 +11,36 @@
 <ion-content padding>
   <ion-item>
     <ion-label>¿Cuando quieres relajarte?</ion-label>
-    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+    <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="myDate"></ion-datetime>
+    <ion-icon name="calendar" item-right></ion-icon>
   </ion-item>
   <!-- this creates a google map on the page with the given lat/lng from -->
   <!-- the component as the initial center of the map: -->
   <agm-map  [zoom]="12" [latitude]="lat" [longitude]="lng">
     
-    <agm-marker *ngFor="let item of parkLocations" [latitude]="item.location.latitude"[longitude]="item.location.longitude" [title]="item.title">
+    <agm-marker *ngFor="let item of parkLocations" [latitude]="item.location.latitude"[longitude]="item.location.longitude" [title]="item.title" iconUrl="assets/imgs/park.png">
       <agm-info-window>
         <strong>{{item.title}}</strong>
       </agm-info-window>
     </agm-marker>
     <agm-marker 
       [latitude]="lat" [longitude]="lng"
-      iconUrl="assets/imgs/ic_person_pin_circle_black.png">
+      iconUrl="assets/imgs/user.png">
     </agm-marker>
 
     <agm-marker *ngFor="let item of locations" 
       [latitude]="item.lat" [longitude]="item.lng">
     </agm-marker>
-    <agm-circle [latitude]="40.9000" [longitude]="-3" 
+
+    <agm-circle *ngFor="let sound of soundReceptors" [latitude]="40" [longitude]="sound.longitude" 
       [radius]="50000"
       [fillColor]="'red'"
       [circleDraggable]="false"
       [editable]="falses">
     </agm-circle>
 
-    <agm-circle [latitude]="40.2000" [longitude]="-3" 
-      [radius]="50000"
-      [fillColor]="'green'"
-      [circleDraggable]="false"
-      [editable]="falses">
-    </agm-circle>
-
-    <agm-circle [latitude]="40.6000" [longitude]="-3" 
-    [radius]="50000"
-    [fillColor]="'orange'"
-    [circleDraggable]="false"
-    [editable]="falses">
-  </agm-circle>
-
-  </agm-map>
+</agm-map>
+<button ion-button full outline (click)="getNoises()">Visualizar ruido!!!</button>
   <button *ngIf="!showParks"ion-button full outline (click)="show()">Mostrar parques</button>
   <button *ngIf="showParks"ion-button full outline (click)="hide()">Ocultar parques</button>
 </ion-content>
