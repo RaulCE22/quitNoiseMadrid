@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>quitNoise</ion-title>
     
   </ion-navbar>
 </ion-header>
@@ -15,7 +15,7 @@
   </ion-item>
   <!-- this creates a google map on the page with the given lat/lng from -->
   <!-- the component as the initial center of the map: -->
-  <agm-map  [zoom]="12" [latitude]="lat" [longitude]="lng">
+  <agm-map  [zoom]="14" [latitude]="lat" [longitude]="lng">
     
     <agm-marker *ngFor="let item of parkLocations" [latitude]="item.location.latitude"[longitude]="item.location.longitude" [title]="item.title">
       <agm-info-window>

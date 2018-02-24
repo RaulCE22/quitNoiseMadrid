@@ -15,6 +15,28 @@ export class DataProvider {
     return this.responseHttp;
   }
 
+  getNoisePollution(){
+    return [{
+      date : "2013-06-26 00:14:26.260524",
+      district : 25,
+      time_of_day : 0, //0: day, 1: evening, 2:nigth
+      polution_value : 75
+    },
+    {
+      date : "2013-06-26 00:14:26.260524",
+      district : 21,
+      time_of_day : 0, //0: day, 1: evening, 2:nigth
+      polution_value : 35
+    },
+    {
+      date : "2013-06-26 00:14:26.260524",
+      district : 20,
+      time_of_day : 0, //0: day, 1: evening, 2:nigth
+      polution_value : 15
+    }
+  ]
+  }
+
 
   //MOCK
   setResponseHttp(){
